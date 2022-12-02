@@ -1,0 +1,137 @@
+@keyframes hide {
+  to {
+    transform: translateY(1000px);
+  }
+}
+@keyframes wonky {
+  0%, 100%{  rotate: -3deg;}
+  50%{ rotate: 3deg; }
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #24391b;
+  position: relative;
+  margin: 0;
+  z-index: 2;
+}
+.bg {
+  width: 100%;
+}
+
+.bg-top {
+  background-image: url('../img/bg/bg-top.png');
+  background-repeat: no-repeat;
+  height: calc(50vh - 57px);
+  background-position-x: center;
+  background-position-y: bottom;
+}
+.bg-middle {
+  background-image: url('../img/bg/bg-middle.png');
+  background-repeat: no-repeat;
+  height: 114px;
+  background-position-x: center;
+  z-index: 200;
+}
+.bg-bottom {
+  background-image: url('../img/bg/bg-bottom.png');
+  background-repeat: no-repeat;
+  background-position-y: top;
+  background-position-x: center;
+  height: calc(50vh - 57px);
+  z-index: 300;
+}
+.logo__group {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 200px;
+  z-index: 200;
+  top: 0;
+  background-image: url('../img/logo.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50%;
+}
+.entity__row:nth-child(2) .entity__cell:first-child {
+  margin-left: -60px;
+}
+.entity__row img {
+  transform: none;
+  z-index: 250;
+  position: absolute;
+  width: 150px;
+  transform: translateY(-200px);
+}
+.entity__row:first-child img {
+  width: 120px;
+  position: absolute;
+  bottom: 0;
+  transform: translateY(-100px);
+  z-index: 150;
+} 
+.logo__group img {
+  width: 50%;
+  height: auto;
+}
+.entity__container {
+  position: absolute;
+  width: 400px;
+  height: 180px;
+  bottom: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.entity__row {
+  display: flex;
+  justify-content: space-between;
+}
+.entity__row:first-child {
+  padding: 0 20px;
+}
+.entity__cell {
+  height: 20px;
+  width: 100px;
+}
+.entity {
+  position: absolute;
+  bottom: 0;
+}
+.zombie {
+  background-image: url('../img/zombie.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.skeleton {
+  background-image: url('../img/skeleton.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.creeper {
+  background-image: url('../img/creeper.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.row-1 {
+  transform: translateY(-110px);
+  width: 120px;
+  height: 200px;
+  z-index: 150;
+}
+.row-2 {
+  width: 180px;
+  height: 220px;
+  z-index: 250;
+}
+.hide {
+  animation: hide 1s;
+}
+.wonky {
+  animation: wonky 1s infinite;
+}
