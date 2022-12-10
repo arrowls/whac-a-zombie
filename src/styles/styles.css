@@ -7,6 +7,13 @@
   0%, 100%{  rotate: -3deg;}
   50%{ rotate: 3deg; }
 }
+@font-face {
+  font-family: 'Minecraft';
+  src:  url('../assets/fonts/Minecraft-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 body {
   height: 100vh;
@@ -29,6 +36,7 @@ body {
   height: calc(50vh - 57px);
   background-position-x: center;
   background-position-y: bottom;
+  position: relative;
 }
 .bg-middle {
   background-image: url('../img/bg/bg-middle.png');
@@ -119,10 +127,10 @@ body {
   background-size: contain;
 }
 .row-1 {
-  transform: translateY(-110px);
   width: 120px;
   height: 200px;
   z-index: 150;
+  translate: 0 -110px;
 }
 .row-2 {
   width: 180px;
@@ -134,4 +142,38 @@ body {
 }
 .wonky {
   animation: wonky 1s infinite;
+}
+.heart {
+  position: relative;
+  z-index: 1000;
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  background-image: url('../img/heart.png');
+}
+.heart__container {
+  gap: 20px;
+  display: flex;
+  position: absolute;
+  z-index: 1000;
+  left: 5%;
+  bottom: 5%;
+}
+#sign {
+  aspect-ratio: 1;
+  background-image: url('../img/sing.png');
+  background-size: cover;
+  width: 120px;
+  position: absolute;
+  z-index: 100;
+  bottom: 10px;
+  padding-top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#sign-number {
+  display: inline-block;
+  font-family: 'Minecraft';
+  width: 100%;
+  text-align: center;
 }

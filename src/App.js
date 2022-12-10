@@ -1,32 +1,33 @@
 import zombie from './sounds/zombie.mp3';
 import skeleton from './sounds/skeleton.mp3';
 import creeper from './sounds/creeper.mp3';
-
-
-
-
+import Entity from './Entity';
 export default class App {
   constructor(entities) {
     this.entities = entities;
+    this.score = 0;
     this.setSounds();
     this.start();
   }
   start() {
-    setInterval(() => {
-      const entity = this.entities[Math.floor(Math.random() * this.entities.length)];
+    this.gameInterval = setInterval(() => {
+      const container =
+        this.entities[Math.floor(Math.random() * this.entities.length)];
       const type = this.randomType;
-      const animation = entity.animate([
-        {transform: 'translateY(100px)'},
-        {transform: 'translateY(0)'}
-      ], 1000);
-      entity.classList.add(type);
-      this.sounds[type].play();
-      animation.finished.then(() => entity.classList.add('wonky'));
+      const entity = new Entity(container, type, this.sounds[type]);
+      this.awaitDamage(entity);
+    }, 5000);
+  }
 
-      entity.addEventListener('click', () => {
-        this.reset(entity);
-      })
-    }, 5000)
+  async awaitDamage(entity) {
+    entity.damaged.then(() => {
+      this.reset(entity.container);
+      this.score++;
+      this.scoreUpdate();
+    }).catch(() => {
+      this.reset(entity.container);
+      this.healthDecrease();
+    })
   }
 
   setSounds() {
@@ -34,7 +35,7 @@ export default class App {
       zombie: new Audio(zombie),
       creeper: new Audio(creeper),
       skeleton: new Audio(skeleton),
-    }
+    };
   }
 
   get randomType() {
@@ -49,5 +50,16 @@ export default class App {
 
   reset(entity) {
     entity.className = entity.className.split(' ').slice(0, 2).join(' ');
+  }
+
+  scoreUpdate() {
+    const scoreContainer = document.querySelector('#sign-number');
+    scoreContainer.textContent = this.score;
+  }
+
+  healthDecrease() {
+    const firstHeart = document.querySelector('.heart');
+    if (!firstHeart) clearInterval(this.gameInterval);
+    firstHeart.remove();
   }
 }

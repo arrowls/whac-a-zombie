@@ -1,5 +1,5 @@
 {
-  "name": "wpv3d",
+  "name": "whac-a-zombie",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,7 +10,7 @@
     "start": "cross-env NODE_ENV=development webpack-dev-server --mode development --open"
   },
   "browserslist": "> 0.25%, not dead",
-  "author": "Mikhail",
+  "author": "arrowls",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.11.4",
@@ -38,5 +38,6 @@
   "dependencies": {
     "@babel/polyfill": "^7.10.4",
     "@tweenjs/tween.js": "^18.6.0"
-  }
+  },
+  "repository": "https://github.com/arrowls/whac-a-zombie.git"
 }
